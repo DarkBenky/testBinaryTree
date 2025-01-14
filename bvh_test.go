@@ -324,106 +324,106 @@ func GetNode(index int, nodeSize uintptr, treePointer unsafe.Pointer) int {
 	return *(*int)(ptr)
 }
 
-// func BenchmarkFixedArrayTreeTraversalIterative(b *testing.B) {
-// 	tree := buildPointerTree(16) // Adjust depth as needed
-// 	treeArray := ConvertToFixedArray(tree, 1)
-// 	b.ResetTimer()
-// 	// res := 0
-// 	for i := 0; i < b.N; i++ {
-// 		_ = traverseArrayTreeFixedIterative(&treeArray)
-// 	}
-// 	// fmt.Println(res, "res")
-// }
+func BenchmarkFixedArrayTreeTraversalIterative(b *testing.B) {
+	tree := buildPointerTree(12) // Adjust depth as needed
+	treeArray := ConvertToFixedArray(tree, 1)
+	b.ResetTimer()
+	// res := 0
+	for i := 0; i < b.N; i++ {
+		_ = traverseArrayTreeFixedIterative(&treeArray)
+	}
+	// fmt.Println(res, "res")
+}
 
-// func BenchmarkFixedArrayTreeTraversal(b *testing.B) {
-// 	tree := buildPointerTree(16) // Adjust depth as needed
-// 	treeArray := ConvertToFixedArray(tree, 1)
-// 	b.ResetTimer()
-// 	// res := 0
-// 	for i := 0; i < b.N; i++ {
-// 		_ = traverseArrayTreeFixed(&treeArray, 1)
-// 	}
-// 	// fmt.Println(res, "res")
-// }
+func BenchmarkFixedArrayTreeTraversal(b *testing.B) {
+	tree := buildPointerTree(12) // Adjust depth as needed
+	treeArray := ConvertToFixedArray(tree, 1)
+	b.ResetTimer()
+	// res := 0
+	for i := 0; i < b.N; i++ {
+		_ = traverseArrayTreeFixed(&treeArray, 1)
+	}
+	// fmt.Println(res, "res")
+}
 
-// // Benchmark for pointer-based tree traversal.
-// func BenchmarkPointerTreeTraversal(b *testing.B) {
-// 	tree := buildPointerTree(16) // Adjust depth as needed
-// 	b.ResetTimer()
-// 	// res := 0
-// 	for i := 0; i < b.N; i++ {
-// 		_ = traversePointerTree(tree)
-// 	}
-// 	// fmt.Println(res, "res")
-// }
+// Benchmark for pointer-based tree traversal.
+func BenchmarkPointerTreeTraversal(b *testing.B) {
+	tree := buildPointerTree(12) // Adjust depth as needed
+	b.ResetTimer()
+	// res := 0
+	for i := 0; i < b.N; i++ {
+		_ = traversePointerTree(tree)
+	}
+	// fmt.Println(res, "res")
+}
 
-// // Benchmark for array-based tree traversal.
-// func BenchmarkArrayTreeTraversal(b *testing.B) {
-// 	// tree := buildArrayTree(8) // Adjust depth as needed
-// 	tree := buildPointerTree(16) // Adjust depth as needed
-// 	treeArray := ArrayTree{Nodes: ConvertTreeToArray(tree, 1)}
-// 	b.ResetTimer()
-// 	// res := 0
-// 	for i := 0; i < b.N; i++ {
-// 		_ = traverseArrayTree(&treeArray, 1)
-// 	}
-// 	// fmt.Println(res, "res")
-// }
+// Benchmark for array-based tree traversal.
+func BenchmarkArrayTreeTraversal(b *testing.B) {
+	// tree := buildArrayTree(8) // Adjust depth as needed
+	tree := buildPointerTree(12) // Adjust depth as needed
+	treeArray := ArrayTree{Nodes: ConvertTreeToArray(tree, 1)}
+	b.ResetTimer()
+	// res := 0
+	for i := 0; i < b.N; i++ {
+		_ = traverseArrayTree(&treeArray, 1)
+	}
+	// fmt.Println(res, "res")
+}
 
-// // Benchmark for unsafe array-based tree traversal.
-// func BenchmarkArrayTreeTraversalUnsafe(b *testing.B) {
-// 	tree := buildPointerTree(16) // Adjust depth as needed
-// 	treeArray := ArrayTree{Nodes: ConvertTreeToArray(tree, 1)}
-// 	b.ResetTimer()
-// 	// res := 0
-// 	nodeSize := unsafe.Sizeof(treeArray.Nodes[0])
-// 	for i := 0; i < b.N; i++ {
-// 		_ = traverseArrayTreeUnsafe(&treeArray, 1, nodeSize)
-// 	}
-// 	// fmt.Println(res, "res")
-// }
+// Benchmark for unsafe array-based tree traversal.
+func BenchmarkArrayTreeTraversalUnsafe(b *testing.B) {
+	tree := buildPointerTree(12) // Adjust depth as needed
+	treeArray := ArrayTree{Nodes: ConvertTreeToArray(tree, 1)}
+	b.ResetTimer()
+	// res := 0
+	nodeSize := unsafe.Sizeof(treeArray.Nodes[0])
+	for i := 0; i < b.N; i++ {
+		_ = traverseArrayTreeUnsafe(&treeArray, 1, nodeSize)
+	}
+	// fmt.Println(res, "res")
+}
 
-// func BenchmarkPointerTreeTraversalNoPtr(b *testing.B) {
-// 	tree := buildPointerTreeNoPtr(16) // Adjust depth as needed
-// 	b.ResetTimer()
-// 	// res := 0
-// 	for i := 0; i < b.N; i++ {
-// 		_ = traversePointerTreeNoPtr(tree)
-// 	}
-// 	// fmt.Println(res, "res")
-// }
+func BenchmarkPointerTreeTraversalNoPtr(b *testing.B) {
+	tree := buildPointerTreeNoPtr(12) // Adjust depth as needed
+	b.ResetTimer()
+	// res := 0
+	for i := 0; i < b.N; i++ {
+		_ = traversePointerTreeNoPtr(tree)
+	}
+	// fmt.Println(res, "res")
+}
 
-// func BenchmarkPointerTreeTraversalPtr(b *testing.B) {
-// 	tree := buildPointerTreePtr(16) // Adjust depth as needed
-// 	b.ResetTimer()
-// 	// res := 0
-// 	for i := 0; i < b.N; i++ {
-// 		_ = traversePointerTreePtr(tree)
-// 	}
-// 	// fmt.Println(res, "res")
-// }
+func BenchmarkPointerTreeTraversalPtr(b *testing.B) {
+	tree := buildPointerTreePtr(12) // Adjust depth as needed
+	b.ResetTimer()
+	// res := 0
+	for i := 0; i < b.N; i++ {
+		_ = traversePointerTreePtr(tree)
+	}
+	// fmt.Println(res, "res")
+}
 
-// func BenchmarkFixedArrayTreeTraversalPtr(b *testing.B) {
-// 	tree := buildPointerTreePtr(16) // Adjust depth as needed
-// 	treeArray := ConvertToFixedArrayPtr(tree, 1)
-// 	b.ResetTimer()
-// 	// res := 0
-// 	for i := 0; i < b.N; i++ {
-// 		_ = traverseArrayTreeFixedPtr(&treeArray, 1)
-// 	}
-// 	// fmt.Println(res, "res")
-// }
+func BenchmarkFixedArrayTreeTraversalPtr(b *testing.B) {
+	tree := buildPointerTreePtr(12) // Adjust depth as needed
+	treeArray := ConvertToFixedArrayPtr(tree, 1)
+	b.ResetTimer()
+	// res := 0
+	for i := 0; i < b.N; i++ {
+		_ = traverseArrayTreeFixedPtr(&treeArray, 1)
+	}
+	// fmt.Println(res, "res")
+}
 
-// func BenchmarkFixedArrayTreeTraversalNoPtr(b *testing.B) {
-// 	tree := buildPointerTreeNoPtr(16) // Adjust depth as needed
-// 	treeArray := ConvertToFixedArrayNoPtr(tree, 1)
-// 	b.ResetTimer()
-// 	// res := 0
-// 	for i := 0; i < b.N; i++ {
-// 		_ = traverseArrayTreeFixedNoPtr(&treeArray, 1)
-// 	}
-// 	// fmt.Println(res, "res")
-// }
+func BenchmarkFixedArrayTreeTraversalNoPtr(b *testing.B) {
+	tree := buildPointerTreeNoPtr(12) // Adjust depth as needed
+	treeArray := ConvertToFixedArrayNoPtr(tree, 1)
+	b.ResetTimer()
+	// res := 0
+	for i := 0; i < b.N; i++ {
+		_ = traverseArrayTreeFixedNoPtr(&treeArray, 1)
+	}
+	// fmt.Println(res, "res")
+}
 
 type bBoxTreeNode struct {
 	BoundingBox BoundingBox
